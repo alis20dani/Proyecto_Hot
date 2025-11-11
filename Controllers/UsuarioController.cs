@@ -7,6 +7,7 @@ using mi_proyecto_sena.Implementacion;
 using mi_proyecto_sena.Models;
 using mi_proyecto_sena.SERVICES;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Npgsql.Replication;
 
@@ -25,11 +26,11 @@ namespace mi_proyecto_sena.Controllers
 
         [HttpPost]
         [Route("register")]
-        public IActionResult register(usuarioModel usuario)
+        public async Task<IActionResult> register(usuarioModel usuario)
         {
             if (usuario != null)
             {
-                usuarioservice.CrearUsuario(usuario);
+                await usuarioservice.CrearUsuario(usuario);
                 return Ok("usuario creado");
             }
             else
@@ -37,6 +38,13 @@ namespace mi_proyecto_sena.Controllers
                 return BadRequest("usuario no puede ser null");
             }
 
+        }
+
+        [HttpGet]
+        [Route("register")]
+        public IActionResult Register()
+        {
+            return View();
         }
     }
 }

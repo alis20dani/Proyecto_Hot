@@ -1,0 +1,23 @@
+@using Microsoft.AspNetCore.Authentication.Cookies
+@model mi_proyecto_sena.Models.usuarioModel
+
+<h1>registrarse</h1>
+
+@using (Html.BeginForm("register","usuario",FormMethod.Post))
+{
+    <label>Nombre</label>
+    @Html.TextBoxFor(modelo => modelo.Usuario_Nombre)
+    <br />
+    <label>Apellido</label>
+    @Html.TextBoxFor(modelo => modelo.Usuario_Apellido)
+    <br />
+    <label>Email</label>
+    @Html.TextBoxFor(modelo => modelo.Usuario_Correo)
+    <br />
+    <label>Password</label>
+    @Html.TextBoxFor(modelo => modelo.Usuario_Contrasena)
+    <br />
+    <input type="submit" value="Guardar" />
+
+}
+

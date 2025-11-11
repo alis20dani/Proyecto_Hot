@@ -15,7 +15,7 @@ builder.Services.AddDbContext<DBContext>(options => options.UseNpgsql(connection
 builder.Services.AddControllersWithViews();
  
 builder.Services.AddScoped<IUsuarioservices, UsuarioService>();
-
+builder.Services.AddScoped<IPasswordServicio, PasswordServicio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
