@@ -1,23 +1,30 @@
-@using Microsoft.AspNetCore.Authentication.Cookies
 @model mi_proyecto_sena.Models.usuarioModel
 
-<h1>registrarse</h1>
-
-@using (Html.BeginForm("register","usuario",FormMethod.Post))
-{
-    <label>Nombre</label>
-    @Html.TextBoxFor(modelo => modelo.Usuario_Nombre)
-    <br />
-    <label>Apellido</label>
-    @Html.TextBoxFor(modelo => modelo.Usuario_Apellido)
-    <br />
-    <label>Email</label>
-    @Html.TextBoxFor(modelo => modelo.Usuario_Correo)
-    <br />
-    <label>Password</label>
-    @Html.TextBoxFor(modelo => modelo.Usuario_Contrasena)
-    <br />
-    <input type="submit" value="Guardar" />
-
-}
-
+<div class="contrainer text-center w-75">
+    <h1>Registrarse</h1>
+    <form asp-action="Register" asp-controller="Usuario" method="post">
+        <div class="from-group">
+            <label for="Usuario_Nombre">Nombre</label>
+            <input type="text" class="form-control" id="Usuario_Nombre" name="Usuario_Nombre" asp-for="Usuario_Nombre"
+                required />
+            <span asp-validation-for="Usuario_Nombre" class="text-danger"></span>
+        </div>
+        <div class="form group">
+            <label for="Usuario_Apellido">Apellido</label>
+            <input type="text" class="form-control" id="Usuario_Apellido" name="Usuario_Apellido" asp-for="Usuario_Apellido" required />
+            <span asp-validation-for="Usuario_Apellido" class="text-danger"></span>
+        </div>
+        <div class="form group">
+            <label for="Usuario_Correo">Correo</label>
+            <input type="email" class="form-control" id="Usuario_Correo" name="Usuario_Correo" asp-for="Usuario_Correo" required />
+            <span asp-validation-for="Usuario_Correo" class="text-danger"></span>
+        </div>
+        <div class="form group">
+            <label for="Usuario_Contrasena">Contrasena</label>
+            <input type="password" class="form-control" id="Usuario_Contrasena" name="Usuario_Contrasena" asp-for="Usuario_Contrasena" required />
+            <span asp-validation-for="Usuario_Contrasena" class="text-danger"></span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Registrarse</button>   
+    </form>
+</div>
