@@ -10,15 +10,16 @@ namespace mi_proyecto_sena.Implementacion
 {
     public class PasswordServicio : IPasswordServicio
     {
-        public string HashPassword(string password)
+        public string HashPassword(string password, out string Salt)
         {
             string hashedPassword;
-            byte[] salt = new byte[128 / 8];
+            byte[] saltBytes = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetBytes(salt);
+                rng.GetBytes(saltBytes);
             }
-            hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(password: password, salt: salt, prf: KeyDerivationPrf.HMACSHA256, iterationCount: 100000, numBytesRequested: 256 / 8));
+            Salt = Convert.ToBase64String(saltBytes);
+            hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(password: password, salt: saltBytes, prf: KeyDerivationPrf.HMACSHA256, iterationCount: 100000, numBytesRequested: 256 / 8));
             return hashedPassword;
         }
     }

@@ -24,7 +24,8 @@ namespace mi_proyecto_sena.Implementacion
         {
             if (usuario != null)
             {
-                usuario.Usuario_Contrasena = passwordServicio.HashPassword(usuario.Usuario_Contrasena);
+                usuario.Usuario_Contrasena = passwordServicio.HashPassword(usuario.Usuario_Contrasena, out string salt);
+                usuario.Usuario_Salt = salt;
                 dBContext.Usuarios.Add(usuario);
                 await dBContext.SaveChangesAsync();
             }

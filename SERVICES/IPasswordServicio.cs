@@ -7,6 +7,6 @@ namespace mi_proyecto_sena.SERVICES
 {
     public interface IPasswordServicio
     {
-        string HashPassword(string password);
+        string HashPassword(string password, out string salt);
     }
 }

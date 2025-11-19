@@ -18,6 +18,8 @@ namespace mi_proyecto_sena.Models
         [Required(ErrorMessage = "La contraseña es obligatoria.")]
         [MinLength(6, ErrorMessage = "La contraseña debe tener al menos 8 caracteres con numeros.")]
         public required string Usuario_Contrasena { get; set; }
+        public string? Usuario_Salt {get; set;}
+    
 
     }
 }
